@@ -1,0 +1,92 @@
+.appli-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.appli-cart{
+    border: 1px solid rgb(230, 230, 230);
+    height: 250px;
+    width: 500px !important;
+    padding: 20px;
+    border-radius: 7px;
+    box-shadow: 0px 0px 1.576px rgba(0, 0, 0, 0.12), 0px 15.76px 15.76px rgba(0, 0, 0, 0.08);
+}
+
+.Decline-btn{
+    border: 1px solid black;
+    width: 45%;
+    background: white;
+    border-radius: 7px;
+}
+
+.Accpet-btn{
+    border: none;
+    width: 45%;
+    margin-left: 15px;
+    height: 35px;
+    border-radius: 7px;
+    background:  #F04F23;
+    color: white;
+}
+
+.add-apli{
+    border: 1px dotted  #FBB848 ;
+    height: 70px;
+    margin-top: 30px;
+    background: rgb(229, 229, 229);
+}
+.leave-apli{
+    border: 1px solid #EB5E12 ;
+    height: 70px;
+    margin-top: 30px;
+    background:  rgba(255, 120, 47, 0.1);
+    padding: 7px;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+.equ-apli{
+    border: 1px solid #FAAD14;
+    height: 70px;
+    margin-top: 30px;
+    background:  rgba(255, 186, 47, 0.1);;
+    padding: 7px;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+.app-apli{
+    border: 1px solid #38B865 ;
+    height: 70px;
+    margin-top: 30px;
+    background:  rgba(47, 255, 120, 0.1);;
+    padding: 7px;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+
+.add-application{
+    text-align: center;
+    color: #F04F23;
+}
+
+.up{
+    margin-top: -30px !important;
+    text-align: center !important;
+    color: #F04F23;
+}
+
+.x-btn{
+  font-size: 15px;
+  border: 1px solid #EB5E12;
+  padding: 3px;
+  border-radius: 50%;
+  margin-top: 3px;
+  color: #EB5E12;
+}
+.x-btn2{
+  font-size: 15px;
+  border: 1px solid #38B865;
+  padding: 3px;
+  border-radius: 50%;
+  margin-top: 3px;
+  color: #38B865;
+}

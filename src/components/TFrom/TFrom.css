@@ -1,0 +1,23 @@
+.form-h6{
+    font-weight: 700;
+    font-size: 23px;
+}
+
+.dr-input{
+    width: 30% !important;
+    outline: none !important;
+    height: 50px;
+
+}
+.fr-input{
+    width: 30%;
+    height: 50px;
+    border: 1px solid #CFD0D7;
+    outline: none !important;
+    padding: 10px;
+}
+
+.f-u-input{
+    border: 1px dotted black;
+    height: 80px;
+}

@@ -1,0 +1,53 @@
+.order-top{
+    border: 1px solid rgb(223, 223, 223);
+    height: 70px;
+    margin-top: 30px;
+    padding-left: 30px;
+    padding-top: 12px;
+}
+
+.o-p{
+    font-size: 11px;
+}
+
+.o-h6{
+    font-weight: 700;
+    margin-top: -13px;
+}
+
+.o-s-i{
+    color: white;
+    background-color: #FBB848;
+    padding: 8px 8px;
+    font-size: 30px;
+    border-radius: 50%;
+    margin-top: 7px;
+}
+.order-t{
+    border-bottom: 1px solid black;
+    margin-top: 40px;
+}
+
+.t-box{
+    width: 25%;
+}
+
+.o-p-btn{
+    background-color: #bbbafbf0;
+    color: #6865fe;
+    padding: 3px 10px;
+    border: none;
+    border-radius: 15px;
+}
+.OComplete{
+    font-weight: 700;
+    color: green;
+}
+.OProcessing{
+    font-weight: 700;
+    color: yellow;
+}
+.OHold{
+    font-weight: 700;
+    color: red;
+}

@@ -1,0 +1,24 @@
+.home {
+  margin: 50px 40px 10px 0;
+}
+
+.work-out{
+  width: 40%;
+  border-right: 1px solid #CED4E2;
+  padding-right: 15px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+
+}
+
+.home-flex{
+  display: flex;
+}
+
+.nutrition{
+   margin-left: 20px;
+}
+
+.profile-short{
+  width: 20%;
+}
