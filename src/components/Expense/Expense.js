@@ -1,7 +1,7 @@
 import React from 'react';
 import { FiFilter } from "react-icons/fi";
 
-const Transactions = () => {
+const Expense = () => {
 
 
   // Date
@@ -21,7 +21,7 @@ const Transactions = () => {
         <div>
             <div>
                 <div className='mt-3'>
-                    <h6 className='form-h6'>Transactions History</h6>
+                    <h6 className='form-h6'>Expense History</h6>
                 </div>
             </div>
             <div className='time-fl'>
@@ -53,9 +53,9 @@ const Transactions = () => {
                     <div className='ms-5'>
                         <p>Credit Card</p>
                     </div>
-                    <div className='ms-5'>
+                    {/* <div className='ms-5'>
                         <p>65zsf1g6541d6s5h4165dt1h65dz1h651td65h16d5t1h</p>
-                    </div>
+                    </div> */}
                     <div className='ms-4'>
                         <p>$ 10,000</p>
                     </div>
@@ -66,4 +66,4 @@ const Transactions = () => {
     );
 };
 
-export default Transactions;
+export default Expense;

@@ -10,6 +10,8 @@ import {
   FaSignOutAlt,
   FaStar,
   FaUserAlt,
+  FaHandHoldingUsd,
+  FaBabyCarriage,
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import "./SideNav.css";
@@ -35,7 +37,7 @@ const SideNav = () => {
           </NavLink>
           <NavLink to="m/salary" className="navItem">
             <li>
-              <FaUserAlt />
+              <FaHandHoldingUsd />
               <br />
               Salary
             </li>
@@ -64,12 +66,20 @@ const SideNav = () => {
               Applications
             </li>
           </NavLink> */}
-          <NavLink to="m/transactions" className="navItem">
+          <NavLink to="m/income" className="navItem">
             <li>
               {" "}
               <FaMoneyBill />
               <br />
-              Transactions
+               Incomes
+            </li>
+          </NavLink>
+          <NavLink to="m/expense" className="navItem">
+            <li>
+              {" "}
+              <FaBabyCarriage />
+              <br />
+               Expense
             </li>
           </NavLink>
           {/* <NavLink to="m/settings" className="navItem">
