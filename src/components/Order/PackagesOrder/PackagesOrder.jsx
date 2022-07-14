@@ -1,26 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { FaShoppingCart } from "react-icons/fa";
-import "./Order.css";
+import "./PackagesOrder.css";
 import { NavLink } from "react-router-dom";
 
-const Order = () => {
-  const [products, setProducts] = useState([]);
+const PackagesOrder = () => {
   const [packages, setPackages] = useState([]);
-  // product
-  useEffect(() => {
-    const url = "https://gym-management97.herokuapp.com/api/product_orders";
-
-    fetch(url, {
-      method: "GET",
-      headers: {
-        Authorization:
-          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3ODg4OTMwLCJpYXQiOjE2NTc4MDI1MzAsImp0aSI6ImFiNjcyNThjODhiODRjYTY5NGZiNjAyNGU3NWE4MDkxIiwidXNlcl9pZCI6MTF9.9YRQ4sWQgaTe1NtPrcllwsDcHLEGWW2722Gd5Ab_cBA",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setProducts(data.data));
-  }, []);
-  // Package
   useEffect(() => {
     const url = "https://gym-management97.herokuapp.com/api/package_order";
 
@@ -34,8 +18,6 @@ const Order = () => {
       .then((res) => res.json())
       .then((data) => setPackages(data.data));
   }, []);
-  console.log(packages);
-
   return (
     <>
       <div className="order-top">
@@ -53,8 +35,7 @@ const Order = () => {
         className="mt-4 d-flex justify-content-between"
         style={{ marginBottom: "50px" }}
       >
-        <h6 className="form-h6">Orders List</h6>
-
+        <h6 className="form-h6">Package Orders List</h6>
         {/* Filter */}
         <NavLink to="/m/order" className="fil">
           All
@@ -65,49 +46,9 @@ const Order = () => {
         <NavLink to="/m/order/packages" className="fil">
           Packages
         </NavLink>
-
-        {/* <div>
-          <button className="fil">
-            <FiFilter className="me-2" />
-            Filter list
-          </button>
-        </div> */}
       </div>
 
-      {products.map((dt) => (
-        <>
-          {dt.order_details.map((item) => (
-            <div className="sel-list d-flex justify-content-between">
-              <div className="ms-5">
-                <p>Product Id: {item.id}</p>
-              </div>
-              <div className="ms-5"></div>
-              <div className="ms-5">
-                <p>{item.name}</p>
-              </div>
-              <div className="ms-5">
-                <p>৳ {item.price}</p>
-              </div>
-              <div className="ms-5">
-                <p
-                  className={`${
-                    item.status === "complete"
-                      ? "OComplete"
-                      : item.status === "processing"
-                      ? "OProcessing"
-                      : item.status === "hold"
-                      ? "OHold"
-                      : ""
-                  }`}
-                >
-                  {item.status}
-                </p>
-              </div>
-            </div>
-          ))}
-        </>
-      ))}
-      {/* Packages */}
+      {/* Body Data */}
       {packages.map((dt) => (
         <>
           <div className="sel-list d-flex justify-content-between">
@@ -131,4 +72,4 @@ const Order = () => {
   );
 };
 
-export default Order;
+export default PackagesOrder;

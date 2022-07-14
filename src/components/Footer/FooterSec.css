@@ -38,7 +38,8 @@ footer {
   cursor: pointer;
 }
 
-.powerd{
+.powered{
+  text-transform: uppercase;
   color: #fff;
   font-size: 1.2rem;
   padding-top: 14px;

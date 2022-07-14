@@ -1,25 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./AccountOverview.css";
 import { FiFilter } from "react-icons/fi";
-import Overview from "./Overview.json";
 import { Button, Form, Modal } from "react-bootstrap";
 
 const AccountOverview = () => {
   const [modalShow, setModalShow] = useState(false);
   const [modalShowIncome, setModalShowIncome] = useState(false);
-  // currentBalance
-  const currentBalance = Overview.map((dt) => dt.income).reduce(
-    (a, b) => a + b,
-    0
-  );
+  // fetch data
+  const [overview, setOverview] = useState([]);
+
+  useEffect(() => {
+    const url =
+      "https://gym-management97.herokuapp.com/api/complete_product_orders";
+
+    fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization:
+          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3ODg4OTMwLCJpYXQiOjE2NTc4MDI1MzAsImp0aSI6ImFiNjcyNThjODhiODRjYTY5NGZiNjAyNGU3NWE4MDkxIiwidXNlcl9pZCI6MTF9.9YRQ4sWQgaTe1NtPrcllwsDcHLEGWW2722Gd5Ab_cBA",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setOverview(data.data));
+  }, []);
+
+  // console.log("i am data", overview);
 
   // totalExpense
-  const totalExpense = Overview.map((dt) => dt.expense).reduce(
-    (a, b) => a + b,
-    0
-  );
+  const totalExpense = overview
+    .map((dt) => dt.expense)
+    .reduce((a, b) => a + b, 0);
   // Total Income
-  const totalIncome = currentBalance - totalExpense;
+  const totalIncome = overview
+    .map((dt) => {
+      let x = parseInt(dt.total_price);
+      return x;
+    })
+    .reduce((a, b) => a + b, 0);
+  // Current Balance
+  const currentBalance = totalIncome - totalExpense;
 
   // Add Expense BS Modals
   // Add Expense BS Modals
@@ -38,10 +57,56 @@ const AccountOverview = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <input type="text" /> <br />
-          <input type="text" /> <br />
-          <input type="text" /> <br />
-          <input type="submit" value="Submit" />
+          {/* Modal Body */}
+          {/* Modal Body */}
+          {/* Modal Body */}
+          <Modal.Body>
+            {/* Expense Form */}
+
+            <Form>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                {/* Expense source */}
+                <Form.Label>Source Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter The Name of Expense Source"
+                />
+                {/* <Form.Text className="text-muted">
+                We'll never share your email with anyone else.
+              </Form.Text> */}
+              </Form.Group>
+              {/* Amount */}
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Amount</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Enter The Amount of Expense"
+                />
+              </Form.Group>
+              {/* Remarks */}
+              {/* Date */}
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Expense Date</Form.Label>
+                <Form.Control type="date" />
+              </Form.Group>
+              {/* Date */}
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Message</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  placeholder="Write Any Message For This Income"
+                />
+              </Form.Group>
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+            </Form>
+
+            {/* Income Form */}
+          </Modal.Body>
+          {/* Modal Body */}
+          {/* Modal Body */}
+          {/* Modal Body */}
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={props.onHide}>Close</Button>
@@ -76,15 +141,21 @@ const AccountOverview = () => {
             <Form.Group className="mb-3" controlId="formBasicEmail">
               {/* income source */}
               <Form.Label>Source Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter The Name of Income Source" />
+              <Form.Control
+                type="text"
+                placeholder="Enter The Name of Income Source"
+              />
               {/* <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
               </Form.Text> */}
             </Form.Group>
-              {/* Amount */}
+            {/* Amount */}
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Amount</Form.Label>
-              <Form.Control type="number" placeholder="Enter The Amount of Income" />
+              <Form.Control
+                type="number"
+                placeholder="Enter The Amount of Income"
+              />
             </Form.Group>
             {/* Remarks */}
             {/* Date */}
@@ -95,7 +166,10 @@ const AccountOverview = () => {
             {/* Date */}
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Message</Form.Label>
-              <Form.Control as="textarea" placeholder="Write Any Message For This Income" />
+              <Form.Control
+                as="textarea"
+                placeholder="Write Any Message For This Income"
+              />
             </Form.Group>
             <Button variant="primary" type="submit">
               Submit
@@ -135,7 +209,10 @@ const AccountOverview = () => {
         <div className="d-flex">
           <div className="b-1">
             <p>Current Balance</p>
-            <h5 style={{ fontWeight: "700" }}>${currentBalance}</h5>
+            <h5 style={{ fontWeight: "700" }}>
+              {/* ${currentBalance} */}
+              $10000
+            </h5>
           </div>
           <div className="b-1">
             {/* Add Expense BS Modals*/}
@@ -157,7 +234,7 @@ const AccountOverview = () => {
               Total Expense
             </p>
             <h5 style={{ fontWeight: "700", color: "#F04F23" }}>
-              ${totalExpense}
+              {/* ${totalExpense} */}$ 30000
             </h5>
           </div>
           <div className="b-3">
@@ -192,26 +269,23 @@ const AccountOverview = () => {
               <input className="date-input ms-4" type="date" />
             </div>
           </div>
-          <div>
-            <p className="fil">
-              <FiFilter className="me-2" />
-              Filter list
-            </p>
-          </div>
         </div>
       </div>
-      {Overview.map((dt) => (
+      {overview.map((dt) => (
         <>
           <div className="mt-4">
             <div className="sel-list d-flex justify-content-between">
               <div className="ms-5">
-                <p>{dt.date}</p>
+                <p>{dt.order_date}</p>
               </div>
               <div className="ms-5">
-                <p>{dt.pName}</p>
+                <p>{dt.user}</p>
               </div>
               <div className="ms-5">
-                <p>${dt.income}</p>
+                <p>${dt.total_price}</p>
+              </div>
+              <div className="ms-5">
+                <p>{dt.payment_type_value}</p>
               </div>
               <button className="detail-btn ms-5">Details</button>
             </div>

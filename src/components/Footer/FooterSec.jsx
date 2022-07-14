@@ -18,7 +18,7 @@ const FooterSec = () => {
                         </div>
                     </div>
                     <div className='col-md-4 col-12'>
-                        <p class="powerd">POWERD BY <span style={{fontWeight: '700'}}>RIZIQ IT SOLUTIONS</span></p>
+                        <p class="powered">powered by <span style={{fontWeight: '700'}}>CROSS-FIT GYM</span></p>
                     </div>
 
                 </div>

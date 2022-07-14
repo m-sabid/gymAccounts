@@ -10,6 +10,8 @@ import Income from "./Income/Income";
 import LoginLogOut from "./LoginLogOut/LoginLogOut";
 import NoMatch from "./NoMatch/NoMatch";
 import Order from "./Order/Order";
+import PackagesOrder from "./Order/PackagesOrder/PackagesOrder";
+import ProductsOrder from "./Order/ProductsOrder/ProductsOrder";
 import ProfilePage from "./ProfilePage/ProfilePage";
 import SalaryOverview from "./SalaryOverview/SalaryOverview";
 import SideNav from "./SideNav/SideNav";
@@ -30,6 +32,8 @@ const App = () => {
         <Route path="m/application" element={<Applications />} />
         <Route path="m/salary" element={<SalaryOverview />} />
         <Route path="m/logout" element={<LoginLogOut />} />
+        <Route path="m/order/packages" element={<PackagesOrder />} />
+        <Route path="m/order/products" element={<ProductsOrder />} />
         {/* Error Page */}
         <Route path="*" element={<NoMatch />} />
 
