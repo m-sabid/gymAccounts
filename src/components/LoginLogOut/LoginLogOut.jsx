@@ -1,80 +1,54 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import AuthUser from "./AuthUser/AuthUser";
 import "./LoginLogOut.css";
-import axios from "axios";
-import { FaGoogle } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 
+export default function LoginLogOut() {
+  const { http, setToken } = AuthUser();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
-const LoginLogOut = () => {
-
-  const navigate = useNavigate();
-
-  
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  // token 
-  const getToken = () => {
-    const tokenString = sessionStorage.getItem('token');
-    const userToken = JSON.parse(tokenString);
-    return userToken;
-  }
-  const getUser = () => {
-    const userString = sessionStorage.getItem('user');
-    const user_detail = JSON.parse(userString);
-    return user_detail;
-  }
-
-  const [token, setToken] = useState(getToken());
-  const [user, setUser] = useState(getUser());
-  
-
-  const saveToken = () =>{
-    sessionStorage.setItem('token',JSON.stringify(token));
-    sessionStorage.setItem('user',JSON.stringify(user));
-
-    setToken(token);
-    setUser(user);
-    navigate("/");
-  }
-  
-  const logInForm = () => {
-    axios
-    .post("https://gym-management97.herokuapp.com/api/auth/",{
-      email: email,
-      password: password,
-    })
-    .then((res) => {
-      saveToken(res.data.user,res.data.access_token);
+  const submitForm = () => {
+    // api call
+    http.post("/auth/", { email: email, password: password }).then((res) => {
+      // console.log(res.data.data.email, res.data.data.access);
+      setToken(res.data.data.email, res.data.data.access);
     });
   };
-  
+
   return (
-    <>
-      <div className="loginSignUp">
-        <div className="login">
-          <label htmlFor="">Email:</label>
-          <input type="email" onChange={(e) => setEmail(e.target.value)} />
-          <br />
-          <label htmlFor="">Password:</label>
-          <input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button id="submit" onClick={logInForm}>
-            Log In
-          </button>
-          <br />
-          <br />
-          <div className="loginWith">
-            <small>Login With</small> <br />
-            <button id="GoogleLogin">
-              <FaGoogle /> Google
-            </button>
+    <div className="row justify-content-center pt-5">
+      <div className="col-sm-6">
+        <div className="card p-4">
+          <h1 className="text-center mb-3">Login </h1>
+          <div className="form-group">
+            <label>Email address:</label>
+            <input
+              type="email"
+              className="form-control"
+              placeholder="Enter email"
+              onChange={(e) => setEmail(e.target.value)}
+              id="email"
+            />
           </div>
+          <div className="form-group mt-3">
+            <label>Password:</label>
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Enter password"
+              onChange={(e) => setPassword(e.target.value)}
+              id="pwd"
+            />
+          </div>
+          <button
+            type="button"
+            onClick={submitForm}
+            className="btn btn-primary mt-4"
+          >
+            Login
+          </button>
         </div>
       </div>
-    </>
+    </div>
   );
-};
-export default LoginLogOut;
+}

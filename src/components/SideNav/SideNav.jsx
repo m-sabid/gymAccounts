@@ -1,14 +1,11 @@
 import React from "react";
-import { HiDocumentText } from "react-icons/hi";
 import {
 
   FaFileAlt,
   FaHome,
   FaMoneyBill,
-  FaRegSun,
   FaShoppingCart,
   FaSignOutAlt,
-  FaStar,
   FaUserAlt,
   FaHandHoldingUsd,
   FaBabyCarriage,
@@ -28,21 +25,21 @@ const SideNav = () => {
               Home
             </li>
           </NavLink>
-          <NavLink to="m/profile" className="navItem">
+          <NavLink to="/profile" className="navItem">
             <li>
               <FaUserAlt />
               <br />
               Profile
             </li>
           </NavLink>
-          <NavLink to="m/salary" className="navItem">
+          <NavLink to="/salary" className="navItem">
             <li>
               <FaHandHoldingUsd />
               <br />
               Salary
             </li>
           </NavLink>
-          <NavLink to="m/form" className="navItem">
+          <NavLink to="/form" className="navItem">
             <li>
               {" "}
               <FaFileAlt />
@@ -50,7 +47,7 @@ const SideNav = () => {
               Form
             </li>
           </NavLink>
-          <NavLink to="m/order" className="navItem">
+          <NavLink to="/order" className="navItem">
             <li>
               {" "}
               <FaShoppingCart />
@@ -66,7 +63,7 @@ const SideNav = () => {
               Applications
             </li>
           </NavLink> */}
-          <NavLink to="m/income" className="navItem">
+          <NavLink to="/income" className="navItem">
             <li>
               {" "}
               <FaMoneyBill />
@@ -74,7 +71,7 @@ const SideNav = () => {
                Incomes
             </li>
           </NavLink>
-          <NavLink to="m/expense" className="navItem">
+          <NavLink to="/expense" className="navItem">
             <li>
               {" "}
               <FaBabyCarriage />
@@ -90,7 +87,7 @@ const SideNav = () => {
               Settings
             </li>
           </NavLink> */}
-          <NavLink to="m/auth" className="navItem">
+          <NavLink to="/auth" className="navItem">
             <li>
               {" "}
               <FaSignOutAlt />
