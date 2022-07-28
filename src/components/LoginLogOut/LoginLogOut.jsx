@@ -1,51 +1,69 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./LoginLogOut.css";
-import { useNavigate } from "react-router-dom"
+import axios from "axios";
 import { FaGoogle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
 
 const LoginLogOut = () => {
-  const [accountsEmail, setAccountsEmail] = useState("");
-  const [accountsPassword, setAccountsPassword] = useState("");
-  const history = useNavigate();
 
-  useEffect(()=>{
-    if(localStorage.getItem('user-info')){
-      history.push("/")
-    }
-  })
+  const navigate = useNavigate();
 
-  async function submitLoginForm() {
-    let item = {accountsEmail, accountsPassword};
-    let result = await fetch("https://gym-management97.herokuapp.com/api/auth/", {
-      method: 'POST',
-      headers:{
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(item)
-    });
-    result = result.json();
-    localStorage.setItem("user-info", JSON.stringify(result))
-    history.push('/')
+  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  // token 
+  const getToken = () => {
+    const tokenString = sessionStorage.getItem('token');
+    const userToken = JSON.parse(tokenString);
+    return userToken;
+  }
+  const getUser = () => {
+    const userString = sessionStorage.getItem('user');
+    const user_detail = JSON.parse(userString);
+    return user_detail;
   }
 
+  const [token, setToken] = useState(getToken());
+  const [user, setUser] = useState(getUser());
+  
 
+  const saveToken = () =>{
+    sessionStorage.setItem('token',JSON.stringify(token));
+    sessionStorage.setItem('user',JSON.stringify(user));
+
+    setToken(token);
+    setUser(user);
+    navigate("/");
+  }
+  
+  const logInForm = () => {
+    axios
+    .post("https://gym-management97.herokuapp.com/api/auth/",{
+      email: email,
+      password: password,
+    })
+    .then((res) => {
+      saveToken(res.data.user,res.data.access_token);
+    });
+  };
+  
   return (
     <>
       <div className="loginSignUp">
         <div className="login">
           <label htmlFor="">Email:</label>
-          <input
-            type="email"
-            onChange={(e) => setAccountsEmail(e.target.value)}
-          />
+          <input type="email" onChange={(e) => setEmail(e.target.value)} />
           <br />
           <label htmlFor="">Password:</label>
           <input
             type="password"
-            onChange={(e) => setAccountsPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
-          <button id="submit" onClick={submitLoginForm}>Log In</button>
+          <button id="submit" onClick={logInForm}>
+            Log In
+          </button>
           <br />
           <br />
           <div className="loginWith">
@@ -59,5 +77,4 @@ const LoginLogOut = () => {
     </>
   );
 };
-
 export default LoginLogOut;

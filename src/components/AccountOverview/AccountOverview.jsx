@@ -43,7 +43,7 @@ const AccountOverview = () => {
       method: "GET",
       headers: {
         Authorization:
-          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5MDEzNzUwLCJpYXQiOjE2NTg5MjczNTAsImp0aSI6IjNhY2FhOGYxMjk1OTRlNWViMTZiMzVhMWJmM2UzODQwIiwidXNlcl9pZCI6MTF9.Bed1NWVf79xraH3bfp1eTb01v7ERPpIQByAzjX16tj4",
+          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5MTA5MjAzLCJpYXQiOjE2NTkwMjI4MDMsImp0aSI6IjRkMzA0NWM2MmJkODQ3YzNhZTk0Yjc2OTA0MjBjMjBiIiwidXNlcl9pZCI6MTF9.u2v2qUgaGpZSJhifPZdGXzxFynLwMjmItjLkV8TPgLE",
       },
     })
       .then((res) => res.json())
@@ -57,7 +57,7 @@ const AccountOverview = () => {
       method: "GET",
       headers: {
         Authorization:
-          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5MDEzNzUwLCJpYXQiOjE2NTg5MjczNTAsImp0aSI6IjNhY2FhOGYxMjk1OTRlNWViMTZiMzVhMWJmM2UzODQwIiwidXNlcl9pZCI6MTF9.Bed1NWVf79xraH3bfp1eTb01v7ERPpIQByAzjX16tj4",
+          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5MTA5MjAzLCJpYXQiOjE2NTkwMjI4MDMsImp0aSI6IjRkMzA0NWM2MmJkODQ3YzNhZTk0Yjc2OTA0MjBjMjBiIiwidXNlcl9pZCI6MTF9.u2v2qUgaGpZSJhifPZdGXzxFynLwMjmItjLkV8TPgLE",
       },
     })
       .then((res) => res.json())
