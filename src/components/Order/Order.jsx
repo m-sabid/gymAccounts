@@ -2,8 +2,14 @@ import React, { useState, useEffect } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import "./Order.css";
 import { NavLink } from "react-router-dom";
+import AuthUser from "../LoginLogOut/AuthUser/AuthUser";
 
 const Order = () => {
+  const { getToken } = AuthUser();
+  const token = getToken();
+
+
+
   const [products, setProducts] = useState([]);
   const [packages, setPackages] = useState([]);
   // product
@@ -14,7 +20,7 @@ const Order = () => {
       method: "GET",
       headers: {
         Authorization:
-          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3OTYzMzk1LCJpYXQiOjE2NTc4NzY5OTUsImp0aSI6IjlmYzI3NzRhZThmYjQ2NGVhYjIyNDI5NmYzYzYxMTgzIiwidXNlcl9pZCI6MX0.nIa3eVZkpObV2HW4jrU40P_k3yFBh1yJJj7xug6EZnI",
+          `Bearer ${token}`,
       },
     })
       .then((res) => res.json())
@@ -28,7 +34,7 @@ const Order = () => {
       method: "GET",
       headers: {
         Authorization:
-          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3OTYzMzk1LCJpYXQiOjE2NTc4NzY5OTUsImp0aSI6IjlmYzI3NzRhZThmYjQ2NGVhYjIyNDI5NmYzYzYxMTgzIiwidXNlcl9pZCI6MX0.nIa3eVZkpObV2HW4jrU40P_k3yFBh1yJJj7xug6EZnI",
+          `Bearer ${token}`,
       },
     })
       .then((res) => res.json())
@@ -56,13 +62,13 @@ const Order = () => {
         <h6 className="form-h6">Orders List</h6>
 
         {/* Filter */}
-        <NavLink to="/m/order" className="fil">
+        <NavLink to="/order" className="fil">
           All
         </NavLink>
-        <NavLink to="/m/order/products" className="fil">
+        <NavLink to="/order/products" className="fil">
           Products
         </NavLink>
-        <NavLink to="/m/order/packages" className="fil">
+        <NavLink to="/order/packages" className="fil">
           Packages
         </NavLink>
 

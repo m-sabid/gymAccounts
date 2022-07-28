@@ -51,7 +51,7 @@ const AccountOverview = () => {
         }
       )
         .then((response) => response.json())
-        .then((data) => setOverview(data.data)
+        .then((data) => console.log(data.data)
         )
         .catch((error) => console.log(error));
     }
@@ -83,7 +83,7 @@ const AccountOverview = () => {
     })
       .then((res) => res.json())
       .then((data) => setExpense(data.data));
-  });
+  }, []);
 
   // totalExpense
   const totalExpense = expense
@@ -156,6 +156,13 @@ const AccountOverview = () => {
                 <Form.Label>Message</Form.Label>
                 <Form.Control
                   as="textarea"
+                  placeholder="Write Any Message For This Income"
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Upload File</Form.Label>
+                <Form.Control
+                  type="file"
                   placeholder="Write Any Message For This Income"
                 />
               </Form.Group>

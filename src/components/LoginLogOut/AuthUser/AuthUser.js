@@ -33,7 +33,7 @@ export default function AuthUser(){
 
     const logout = () => {
         sessionStorage.clear();
-        navigate('/login');
+        navigate('/auth');
     }
 
     const http = axios.create({

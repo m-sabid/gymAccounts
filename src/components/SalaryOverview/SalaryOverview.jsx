@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FiFilter } from "react-icons/fi";
 import "./SalaryOverview.css";
 import FData from "./salary.json";
+import AuthUser from "../LoginLogOut/AuthUser/AuthUser";
 
 const SalaryOverview = () => {
+  const { getToken } = AuthUser();
+  const token = getToken();
+
+
+  const [salary, setSalary] = useState([])
+
+
+  useEffect(()=>{
+    const url = "https://gym-management97.herokuapp.com/api/salary_overview";
+
+    fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization:
+          `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setSalary(data.data));
+  }, []);
+
+  console.log(salary);
+
+
   // Date
   let today = new Date();
   const dd = String(today.getDate()).padStart(2, "0");
@@ -59,7 +84,7 @@ const SalaryOverview = () => {
       </div>
       <div className="mt-4">
         {/* 1 */}
-        {FData.map((dt) => (
+        {salary.map((dt) => (
           <div className="sel-list d-flex justify-content-between">
             <div>
               <img
@@ -69,24 +94,24 @@ const SalaryOverview = () => {
               />
             </div>
             <div className="ms-5">
-              <p>{dt.SDate}</p>
+              <p>{dt.user.name}</p>
             </div>
             <div className="ms-5">
-              <p>{dt.userName}</p>
+              <p>{dt.date}</p>
             </div>
             <div className="ms-5">
               <p
                 className={`${
-                  dt.Status === "Paid"
+                  dt.status === "Paid"
                     ? "SPaid"
-                    : dt.Status === "Hold"
+                    : dt.status === "Hold"
                     ? "SHold"
-                    : dt.Status === "Un paid"
+                    : dt.status === "Un paid"
                     ? "SUnpaid"
                     : ""
                 }`}
               >
-                {dt.Status}
+                {dt.status}
               </p>
             </div>
           </div>

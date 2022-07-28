@@ -11,9 +11,17 @@ import {
   FaBabyCarriage,
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import AuthUser from "../LoginLogOut/AuthUser/AuthUser";
 import "./SideNav.css";
 
 const SideNav = () => {
+  const {token, logout} = AuthUser();
+
+  const logOutUser = () => {
+    if(token != undefined){
+      logout();
+    }
+  }
   return (
     <div className="SideNav">
       <div className="Nav">
@@ -87,12 +95,20 @@ const SideNav = () => {
               Settings
             </li>
           </NavLink> */}
-          <NavLink to="/auth" className="navItem">
+          {/* <NavLink to="/auth" className="navItem">
             <li>
               {" "}
               <FaSignOutAlt />
               <br />
-              Log out / log in 
+              log in 
+            </li>
+          </NavLink> */}
+          <NavLink to="/auth" className="navItem" onClick={logOutUser}>
+            <li>
+              {" "}
+              <FaSignOutAlt />
+              <br />
+              Log out
             </li>
           </NavLink>
         </ul>
