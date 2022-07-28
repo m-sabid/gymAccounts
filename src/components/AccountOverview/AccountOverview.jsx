@@ -1,14 +1,40 @@
 import React, { useEffect, useState } from "react";
 import "./AccountOverview.css";
-import { FiFilter } from "react-icons/fi";
 import { Button, Form, Modal } from "react-bootstrap";
 
 const AccountOverview = () => {
   const [modalShow, setModalShow] = useState(false);
   const [modalShowIncome, setModalShowIncome] = useState(false);
-  // fetch data
   const [overview, setOverview] = useState([]);
 
+  // const [dateFilter, setDateFilter] = useState([]);
+
+  // Date Filter
+  // const x = overview.map(dt=>(dt.order_date))
+  // console.log("i am x", x);
+  // x.filter(date => getDate)
+
+  const getDate = (e) => {
+    const getDataFromUI = e.target.value;
+    // console.log("date value", getDataFromUI);
+
+    const dateMatch = overview.filter((element, index) => {
+      console.log("I am element", getDataFromUI);
+      console.log("I am final data", element === getDataFromUI);
+
+      return element.order_date === getDataFromUI;
+    });
+
+    return setOverview(dateMatch);
+  };
+
+  // console.log("i am ", orderDate);
+
+  console.log("after filter", overview);
+
+  // fetch data
+
+  // income
   useEffect(() => {
     const url =
       "https://gym-management97.herokuapp.com/api/complete_product_orders";
@@ -17,14 +43,26 @@ const AccountOverview = () => {
       method: "GET",
       headers: {
         Authorization:
-          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3ODg4OTMwLCJpYXQiOjE2NTc4MDI1MzAsImp0aSI6ImFiNjcyNThjODhiODRjYTY5NGZiNjAyNGU3NWE4MDkxIiwidXNlcl9pZCI6MTF9.9YRQ4sWQgaTe1NtPrcllwsDcHLEGWW2722Gd5Ab_cBA",
+          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5MDEzNzUwLCJpYXQiOjE2NTg5MjczNTAsImp0aSI6IjNhY2FhOGYxMjk1OTRlNWViMTZiMzVhMWJmM2UzODQwIiwidXNlcl9pZCI6MTF9.Bed1NWVf79xraH3bfp1eTb01v7ERPpIQByAzjX16tj4",
       },
     })
       .then((res) => res.json())
       .then((data) => setOverview(data.data));
   }, []);
+  // expense
 
-  // console.log("i am data", overview);
+  useEffect(() => {
+    const expenseUrl = "https://gym-management97.herokuapp.com/api/expense";
+    fetch(expenseUrl, {
+      method: "GET",
+      headers: {
+        Authorization:
+          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU5MDEzNzUwLCJpYXQiOjE2NTg5MjczNTAsImp0aSI6IjNhY2FhOGYxMjk1OTRlNWViMTZiMzVhMWJmM2UzODQwIiwidXNlcl9pZCI6MTF9.Bed1NWVf79xraH3bfp1eTb01v7ERPpIQByAzjX16tj4",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log("I am expanse", data));
+  });
 
   // totalExpense
   const totalExpense = overview
@@ -266,7 +304,11 @@ const AccountOverview = () => {
               <p id="date">{today}</p>
             </div>
             <div>
-              <input className="date-input ms-4" type="date" />
+              <input
+                className="date-input ms-4"
+                type="date"
+                onChange={getDate}
+              />
             </div>
           </div>
         </div>

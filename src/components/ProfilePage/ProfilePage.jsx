@@ -2,7 +2,7 @@ import React from "react";
 import FormSec from "./Form/FormSec";
 import "./Profile.css";
 
-const ProfilePage = () => {
+const ProfilePage = ({ authenticate }) => {
   return (
     <>
       <div className="profileHeader">

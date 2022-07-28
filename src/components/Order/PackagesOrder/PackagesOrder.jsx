@@ -12,7 +12,7 @@ const PackagesOrder = () => {
       method: "GET",
       headers: {
         Authorization:
-          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3ODg4OTMwLCJpYXQiOjE2NTc4MDI1MzAsImp0aSI6ImFiNjcyNThjODhiODRjYTY5NGZiNjAyNGU3NWE4MDkxIiwidXNlcl9pZCI6MTF9.9YRQ4sWQgaTe1NtPrcllwsDcHLEGWW2722Gd5Ab_cBA",
+          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3OTYzMzk1LCJpYXQiOjE2NTc4NzY5OTUsImp0aSI6IjlmYzI3NzRhZThmYjQ2NGVhYjIyNDI5NmYzYzYxMTgzIiwidXNlcl9pZCI6MX0.nIa3eVZkpObV2HW4jrU40P_k3yFBh1yJJj7xug6EZnI",
       },
     })
       .then((res) => res.json())

@@ -66,3 +66,10 @@
     font-weight: 700;
     margin-left: 300px !important;
 }
+#all_product{
+    background-color: #FBB848;
+    padding: 5px 20px;
+    border: none;
+    color: white;
+    border-radius: 10px;
+}

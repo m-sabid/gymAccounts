@@ -90,7 +90,7 @@ const SideNav = () => {
               Settings
             </li>
           </NavLink> */}
-          <NavLink to="m/logout" className="navItem">
+          <NavLink to="m/auth" className="navItem">
             <li>
               {" "}
               <FaSignOutAlt />
