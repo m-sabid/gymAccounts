@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./AccountOverview.css";
-import { Button, Form, Modal } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import AuthUser from "../LoginLogOut/AuthUser/AuthUser";
+import { MyVerticallyCenteredModal, MyIncomeModals } from "./Modal/ModalForForm"
 
 const AccountOverview = () => {
   const { getToken } = AuthUser();
@@ -25,9 +26,6 @@ const AccountOverview = () => {
     // console.log("date value", getDataFromUI);
 
     const dateMatch = overview.filter((element, index) => {
-      console.log("I am element", getDataFromUI);
-      console.log("I am final data", element === getDataFromUI);
-
       return element.order_date === getDataFromUI;
     });
 
@@ -51,8 +49,7 @@ const AccountOverview = () => {
         }
       )
         .then((response) => response.json())
-        .then((data) => console.log(data.data)
-        )
+        .then((data) => setOverview(data.data))
         .catch((error) => console.log(error));
     }
     getFetchData();
@@ -102,160 +99,6 @@ const AccountOverview = () => {
   // Current Balance
   const currentBalance = totalIncome - totalExpense;
 
-  // Add Expense BS Modals
-  // Add Expense BS Modals
-  // Add Expense BS Modals
-  function MyVerticallyCenteredModal(props) {
-    return (
-      <Modal
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Add Expense
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {/* Modal Body */}
-          {/* Modal Body */}
-          {/* Modal Body */}
-          <Modal.Body>
-            {/* Expense Form */}
-
-            <Form>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                {/* Expense source */}
-                <Form.Label>Source Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter The Name of Expense Source"
-                />
-                {/* <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text> */}
-              </Form.Group>
-              {/* Amount */}
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Amount</Form.Label>
-                <Form.Control
-                  type="number"
-                  placeholder="Enter The Amount of Expense"
-                />
-              </Form.Group>
-              {/* Remarks */}
-              {/* Date */}
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Expense Date</Form.Label>
-                <Form.Control type="date" />
-              </Form.Group>
-              {/* Date */}
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Message</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  placeholder="Write Any Message For This Income"
-                />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Upload File</Form.Label>
-                <Form.Control
-                  type="file"
-                  placeholder="Write Any Message For This Income"
-                />
-              </Form.Group>
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
-            </Form>
-
-            {/* Income Form */}
-          </Modal.Body>
-          {/* Modal Body */}
-          {/* Modal Body */}
-          {/* Modal Body */}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
-  // Add Expense BS Modals
-  // Add Expense BS Modals
-  // Add Expense BS Modals
-
-  // add income modals
-  // add income modals
-  // add income modals
-  function MyIncomeModals(params) {
-    return (
-      <Modal
-        {...params}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Add Income
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {/* Income Form */}
-
-          <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              {/* income source */}
-              <Form.Label>Source Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter The Name of Income Source"
-              />
-              {/* <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text> */}
-            </Form.Group>
-            {/* Amount */}
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Amount</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Enter The Amount of Income"
-              />
-            </Form.Group>
-            {/* Remarks */}
-            {/* Date */}
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Income Date</Form.Label>
-              <Form.Control type="date" />
-            </Form.Group>
-            {/* Date */}
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Message</Form.Label>
-              <Form.Control
-                as="textarea"
-                placeholder="Write Any Message For This Income"
-              />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-          </Form>
-
-          {/* Income Form */}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={params.onHide}>Close</Button>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
-  // add income modals
-  // add income modals
-  // add income modals
 
   // Date
   let today = new Date();

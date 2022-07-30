@@ -8,6 +8,35 @@ const Expense = () => {
 
   const [expense, setExpense] = useState([]);
 
+  // Filter Date
+  const getDate = (e) => {
+    const getDataFromUI = e.target.value;
+    // console.log("date value", getDataFromUI);
+    const dateMatch = expense.filter((element, index) => {
+      console.log(element);
+      return element.expense_date === getDataFromUI;
+    });
+    return setExpense(dateMatch);
+  };
+
+  const getAllOverview = () => {
+    async function getFetchData(url) {
+      await fetch(
+        "https://gym-management97.herokuapp.com/api/expense",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => setExpense(data.data))
+        .catch((error) => console.log(error));
+    }
+    getFetchData();
+  };
+
   // Date
   let today = new Date();
   const dd = String(today.getDate()).padStart(2, "0");
@@ -30,7 +59,7 @@ const Expense = () => {
       .then((data) => setExpense(data.data));
   }, []);
 
-//   console.log(expense);
+  //   console.log(expense);
 
   return (
     <div>
@@ -46,7 +75,14 @@ const Expense = () => {
               <p id="date">{today}</p>
             </div>
             <div>
-              <input className="date-input ms-4" type="date" />
+              <input
+                className="date-input ms-4"
+                type="date"
+                onChange={getDate}
+              />
+              <button className="allBtn" onClick={getAllOverview}>
+                All
+              </button>
             </div>
           </div>
           <div>
@@ -75,8 +111,7 @@ const Expense = () => {
             <button className="detail-btn ms-5">Details</button>
           </div>
         </div>
-      ))
-      }
+      ))}
     </div>
   );
 };

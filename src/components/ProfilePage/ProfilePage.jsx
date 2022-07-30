@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import FormSec from "./Form/FormSec";
 import "./Profile.css";
 
@@ -26,9 +27,15 @@ const ProfilePage = ({ authenticate }) => {
           <div className="acclvl">
             <p>Acces Level:</p>
             <div className="btnSec">
-              <button id="accBtn">Transctions</button>
-              <button id="accBtn">Purchess</button>
-              <button id="accBtn">Salary</button>
+              <Link id="accBtn" to={"/transctions"}>
+                Transctions
+              </Link>
+              <Link id="accBtn" to={"/purchess"}>
+                Purchess
+              </Link>
+              <Link id="accBtn" to={"/accountsSalary"}>
+                Salary
+              </Link>
             </div>
           </div>
         </div>

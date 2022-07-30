@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "../Home/Home"
+import Home from "../Home/Home";
 import AllProducts from "../AccountOverview/AllProducts/AllProducts";
 import Applications from "../Applications/Applications";
 import Expense from "../Expense/Expense";
@@ -15,6 +15,7 @@ import ProfilePage from "../ProfilePage/ProfilePage";
 import SalaryOverview from "../SalaryOverview/SalaryOverview";
 import SideNav from "../SideNav/SideNav";
 import TFrom from "../TFrom/TFrom";
+import AccountsSalary from "../ProfilePage/AccountsSalary/AccountsSalary";
 
 const AuthenticatedUser = () => {
   return (
@@ -26,6 +27,9 @@ const AuthenticatedUser = () => {
           <Route index element={<Home />} />
 
           {/* <Route path="/*" element={<PrivetOutlet />}> */}
+          {/* Profile Route */}
+          <Route path="/accountsSalary" element={<AccountsSalary />} />
+          {/* Profile Route */}
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/form" element={<TFrom />} />
           <Route path="/income" element={<Income />} />
