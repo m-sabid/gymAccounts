@@ -51,12 +51,12 @@ const Income = () => {
               {/* <input className="date-input ms-4" type="date" /> */}
             </div>
           </div>
-          <div>
+          {/* <div>
             <p className="fil">
               <FiFilter className="me-2" />
               Filter list
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
 

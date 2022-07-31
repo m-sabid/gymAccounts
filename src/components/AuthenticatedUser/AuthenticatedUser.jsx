@@ -16,6 +16,8 @@ import SalaryOverview from "../SalaryOverview/SalaryOverview";
 import SideNav from "../SideNav/SideNav";
 import TFrom from "../TFrom/TFrom";
 import AccountsSalary from "../ProfilePage/AccountsSalary/AccountsSalary";
+import PettyCash from "../Expense/PettyCash/PettyCash";
+import Instruments from "../Expense/Instruments/Instruments";
 
 const AuthenticatedUser = () => {
   return (
@@ -39,6 +41,8 @@ const AuthenticatedUser = () => {
           <Route path="/salary" element={<SalaryOverview />} />
           <Route path="/order/packages" element={<PackagesOrder />} />
           <Route path="/order/products" element={<ProductsOrder />} />
+          <Route path="/expense/pettycash" element={<PettyCash />} />
+          <Route path="/expense/instruments" element={<Instruments />} />
           <Route path="/overview" element={<AllProducts />} />
 
           {/* </Route> */}

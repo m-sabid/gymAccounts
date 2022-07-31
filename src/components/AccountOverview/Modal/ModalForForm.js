@@ -2,17 +2,18 @@ import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 
 export function MyVerticallyCenteredModal(props) {
-  const [expenseSource, setExpenseSource] = useState();
-  const [expenseAmount, setExpenseAmount] = useState();
-  const [expenseDate, setExpenseDate] = useState();
-  const [expenseMessage, setExpenseMessage] = useState();
-  const [expenseFile, setExpenseFile] = useState();
+  const [expenseSource, setExpenseSource] = useState('');
+  const [expenseAmount, setExpenseAmount] = useState('');
+  const [expenseDate, setExpenseDate] = useState('');
+  const [expenseMessage, setExpenseMessage] = useState('');
+  const [expenseFile, setExpenseFile] = useState('');
 
   console.log("expenseSource:", expenseSource);
   console.log("expenseAmount:", expenseAmount);
   console.log("expenseDate:", expenseDate);
   console.log("expenseMessage:", expenseMessage);
   console.log("expenseFile:", expenseFile);
+
 
   return (
     <Modal
@@ -84,7 +85,7 @@ export function MyVerticallyCenteredModal(props) {
             <Button
               variant="primary"
               type="submit"
-              onChange={(e) => setExpenseMessage(e.target.value)}
+              // onChange={submitExpense}
             >
               Submit
             </Button>
@@ -110,16 +111,24 @@ export function MyVerticallyCenteredModal(props) {
 // add income modals
 // add income modals
 export function MyIncomeModals(params) {
+
   //   income
-  const [incomeSource, setIncomeSource] = useState();
-  const [incomeAmount, setIncomeAmount] = useState();
-  const [incomeDate, setIncomeDate] = useState();
-  const [incomeMessage, setIncomeMessage] = useState();
+  const [incomeSource, setIncomeSource] = useState('');
+  const [incomeAmount, setIncomeAmount] = useState('');
+  const [incomeDate, setIncomeDate] = useState('');
+  const [incomeMessage, setIncomeMessage] = useState('');
 
   console.log("incomeSource:", incomeSource);
   console.log("incomeAmount:", incomeAmount);
   console.log("incomeDate:", incomeDate);
   console.log("incomeMessage:", incomeMessage);
+
+
+
+
+
+
+
   return (
     <Modal
       {...params}
@@ -173,7 +182,7 @@ export function MyIncomeModals(params) {
               onChange={(e) => setIncomeMessage(e.target.value)}
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button variant="primary" onClick={()=>{}}>
             Submit
           </Button>
         </Form>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FiFilter } from "react-icons/fi";
+import { NavLink } from "react-router-dom";
 import AuthUser from "../LoginLogOut/AuthUser/AuthUser";
 
 const Expense = () => {
@@ -21,15 +22,12 @@ const Expense = () => {
 
   const getAllOverview = () => {
     async function getFetchData(url) {
-      await fetch(
-        "https://gym-management97.herokuapp.com/api/expense",
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      await fetch("https://gym-management97.herokuapp.com/api/expense", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
         .then((response) => response.json())
         .then((data) => setExpense(data.data))
         .catch((error) => console.log(error));
@@ -75,21 +73,25 @@ const Expense = () => {
               <p id="date">{today}</p>
             </div>
             <div>
-              <input
-                className="date-input ms-4"
-                type="date"
-                onChange={getDate}
-              />
-              <button className="allBtn" onClick={getAllOverview}>
-                All
-              </button>
+              <input className="date-input ms-4" type="date" onBlur={getDate} />
             </div>
           </div>
           <div>
-            <p className="fil">
-              <FiFilter className="me-2" />
-              Filter list
-            </p>
+            <NavLink className="fil" to="/expense" onClick={getAllOverview}>
+              All
+            </NavLink>
+          </div>
+          <div>
+            <NavLink to="/expense/instruments" className="fil">
+              {/* <FiFilter className="me-2" /> */}
+              Instruments
+            </NavLink>
+          </div>
+          <div>
+            <NavLink to="/expense/pettycash" className="fil">
+              {/* <FiFilter className="me-2" /> */}
+              Petty Cash
+            </NavLink>
           </div>
         </div>
       </div>
